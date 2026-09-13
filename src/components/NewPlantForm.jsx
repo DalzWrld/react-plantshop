@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function NewPlantForm({ onAddPlant }) {
   const [name, setName] = useState("");
@@ -14,11 +14,30 @@ function NewPlantForm({ onAddPlant }) {
       price,
     };
 
-    onAddPlant(newPlant);
-
-    setName("");
-    setImage("");
-    setPrice("");
+    fetch("http://localhost:6001/plants", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPlant),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to create plant");
+        return res.json();
+      })
+      .then((plant) => {
+        onAddPlant(plant);
+        setName("");
+        setImage("");
+        setPrice("");
+      })
+      .catch(() => {
+        // Still surface the plant locally if the server is unavailable
+        onAddPlant(newPlant);
+        setName("");
+        setImage("");
+        setPrice("");
+      });
   }
 
   return (
@@ -38,7 +57,6 @@ function NewPlantForm({ onAddPlant }) {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-
       <button type="submit">Add Plant</button>
     </form>
   );

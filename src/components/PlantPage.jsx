@@ -12,44 +12,29 @@ function PlantPage({ plants = [], onAddPlant }) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="hero">
-        <div className="hero-left">
-          <p className="hero-eyebrow">Welcome to the admin dashboard</p>
+      <section className="hero" id="top" aria-label="Plantsy welcome">
+        <div className="hero-copy">
+          <p className="brand-hero">Plantsy</p>
           <h1 className="hero-title">Bring nature indoors</h1>
           <p className="hero-sub">
-            Manage your plant catalogue, track stock, and add new arrivals — all in one place.
+            Curate stock, welcome new arrivals, and keep every shelf green.
           </p>
-          <div className="hero-stats">
-            <div>
-              <div className="hero-stat-num">{plants.length}</div>
-              <div className="hero-stat-label">Plants listed</div>
-            </div>
-            <div>
-              <div className="hero-stat-num">280+</div>
-              <div className="hero-stat-label">Orders shipped</div>
-            </div>
-          </div>
-        </div>
-        <div className="hero-right">
-          <div className="hero-arch">
-            <img
-              src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=600&q=80"
-              alt="Featured plant"
-            />
-          </div>
+          <a className="hero-cta" href="#catalogue">
+            Browse catalogue
+          </a>
         </div>
       </section>
 
-      {/* Main content */}
       <main className="app-body">
-        {/* Add plant form */}
-        <NewPlantForm onAddPlant={onAddPlant} />
+        <div id="new-plant">
+          <NewPlantForm onAddPlant={onAddPlant} />
+        </div>
 
-        {/* Plant list section */}
-        <div className="section-header">
+        <div className="section-header" id="catalogue">
           <h2 className="section-title">All Plants</h2>
-          <p className="section-sub">Click "In Stock" to mark a plant as sold out</p>
+          <p className="section-sub">
+            Click &quot;In Stock&quot; to mark a plant as out of stock
+          </p>
         </div>
 
         <div className="search-row">

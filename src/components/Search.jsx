@@ -1,11 +1,11 @@
 function Search({ search, onSearch }) {
   return (
     <div className="searchbar">
-      <label htmlFor="search">🔍</label>
+      <label htmlFor="search">Search</label>
       <input
         type="text"
         id="search"
-        placeholder="Search plants by name..."
+        placeholder="Type a name to search..."
         value={search}
         onChange={(e) => onSearch(e.target.value)}
       />

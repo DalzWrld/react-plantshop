@@ -13,7 +13,11 @@ function App() {
         return res.json();
       })
       .then(setPlants)
-      .catch(() => setError("Could not connect to the server. Make sure it's running on port 6001."));
+      .catch(() =>
+        setError(
+          "Could not connect to the server. Make sure it's running on port 6001."
+        )
+      );
   }, []);
 
   function handleAddPlant(newPlant) {
@@ -23,7 +27,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {error && <p style={{ color: "red", padding: "1rem 4rem" }}>{error}</p>}
+      {error && <p className="error-banner">{error}</p>}
       <PlantPage plants={plants} onAddPlant={handleAddPlant} />
     </div>
   );
