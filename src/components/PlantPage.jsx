@@ -1,62 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
 
-function PlantPage() {
-  const [plants, setPlants] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+function PlantPage({ plants = [], onAddPlant }) {
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:6001/plants")
-      .then((res) => res.json())
-      .then((data) => {
-        const plantsWithStock = data.map((plant) => ({
-          ...plant,
-          inStock: true,
-        }));
-        setPlants(plantsWithStock);
-      });
-  }, []);
-
-  function handleAddPlant(newPlant) {
-    fetch("http://localhost:6001/plants", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPlant),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setPlants([
-          ...plants,
-          { ...data, inStock: true }
-        ]);
-      });
-  }
-
-  function handleToggleStock(id) {
-    const updatedPlants = plants.map((plant) =>
-      plant.id === id
-        ? { ...plant, inStock: !plant.inStock }
-        : plant
-    );
-    setPlants(updatedPlants);
-  }
-
-  const filteredPlants = plants.filter((plant) =>
-    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredPlants = plants.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <main>
-      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+    <>
+      {/* Hero */}
+      <section className="hero">
+        <div className="hero-left">
+          <p className="hero-eyebrow">Welcome to the admin dashboard</p>
+          <h1 className="hero-title">Bring nature indoors</h1>
+          <p className="hero-sub">
+            Manage your plant catalogue, track stock, and add new arrivals — all in one place.
+          </p>
+          <div className="hero-stats">
+            <div>
+              <div className="hero-stat-num">{plants.length}</div>
+              <div className="hero-stat-label">Plants listed</div>
+            </div>
+            <div>
+              <div className="hero-stat-num">280+</div>
+              <div className="hero-stat-label">Orders shipped</div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-right">
+          <div className="hero-arch">
+            <img
+              src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=600&q=80"
+              alt="Featured plant"
+            />
+          </div>
+        </div>
+      </section>
 
-      <NewPlantForm onAddPlant={handleAddPlant} />
+      {/* Main content */}
+      <main className="app-body">
+        {/* Add plant form */}
+        <NewPlantForm onAddPlant={onAddPlant} />
 
-      <PlantList plants={filteredPlants} onToggleStock={handleToggleStock} />
-    </main>
+        {/* Plant list section */}
+        <div className="section-header">
+          <h2 className="section-title">All Plants</h2>
+          <p className="section-sub">Click "In Stock" to mark a plant as sold out</p>
+        </div>
+
+        <div className="search-row">
+          <Search search={search} onSearch={setSearch} />
+        </div>
+
+        <PlantList plants={filteredPlants} />
+      </main>
+    </>
   );
 }
 
