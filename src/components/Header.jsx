@@ -5,9 +5,13 @@ function Header() {
         Plantsy
       </a>
       <nav aria-label="Primary">
-        <a href="#catalogue">Catalogue</a>
-        <a href="#new-plant">Add plant</a>
+        <a href="#top">Home</a>
+        <a href="#catalogue">Plants</a>
+        <a href="#new-plant">Shop</a>
       </nav>
+      <a className="header-cta" href="#new-plant">
+        Contact
+      </a>
     </header>
   );
 }

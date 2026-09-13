@@ -14,14 +14,43 @@ function PlantPage({ plants = [], onAddPlant }) {
     <>
       <section className="hero" id="top" aria-label="Plantsy welcome">
         <div className="hero-copy">
-          <p className="brand-hero">Plantsy</p>
-          <h1 className="hero-title">Bring nature indoors</h1>
+          <h1 className="hero-title">Top Selling Plants</h1>
           <p className="hero-sub">
-            Curate stock, welcome new arrivals, and keep every shelf green.
+            Discover lush indoor greens curated for modern spaces — manage stock
+            and grow your catalogue with ease.
           </p>
-          <a className="hero-cta" href="#catalogue">
-            Browse catalogue
+          <a className="hero-cta" href="#catalogue" aria-label="Browse catalogue">
+            →
           </a>
+          <div className="hero-meta">
+            <span className="hero-stars" aria-label="5 star rating">
+              ★★★★★
+            </span>
+            <ul className="hero-social">
+              <li>
+                <a href="#catalogue" aria-label="Facebook">
+                  f
+                </a>
+              </li>
+              <li>
+                <a href="#catalogue" aria-label="Twitter">
+                  𝕏
+                </a>
+              </li>
+              <li>
+                <a href="#catalogue" aria-label="Instagram">
+                  ◯
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="hero-visual">
+          <img
+            src="/images/hero-plant.jpg"
+            alt="Featured leafy plant in a pot"
+          />
         </div>
       </section>
 
@@ -31,9 +60,10 @@ function PlantPage({ plants = [], onAddPlant }) {
         </div>
 
         <div className="section-header" id="catalogue">
-          <h2 className="section-title">All Plants</h2>
+          <h2 className="section-title">Indoor Plants</h2>
           <p className="section-sub">
-            Click &quot;In Stock&quot; to mark a plant as out of stock
+            Browse the collection and click &quot;In Stock&quot; to mark a plant
+            as out of stock.
           </p>
         </div>
 
