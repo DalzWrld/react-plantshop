@@ -48,7 +48,7 @@ function PlantPage({ plants = [], onAddPlant }) {
 
         <div className="hero-visual">
           <img
-            src="/images/hero-plant.jpg"
+            src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=800&q=80"
             alt="Featured leafy plant in a pot"
           />
         </div>
