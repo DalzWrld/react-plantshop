@@ -11,7 +11,7 @@ function PlantCard({ plant }) {
       </div>
       <div className="card-body">
         <h4>{name}</h4>
-        <p>Price: {price}</p>
+        <p>Price: ${parseFloat(price).toFixed(2)}</p>
         <div className="card-footer">
           <button
             type="button"
