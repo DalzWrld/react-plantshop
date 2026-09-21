@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "server": "json-server db.json -p 6001",
+    "server": "json-server db.json",
     "test": "vitest"
   },
   "eslintConfig": {
