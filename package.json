@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
     "server": "json-server db.json -p 6001",
     "test": "vitest"
   },
