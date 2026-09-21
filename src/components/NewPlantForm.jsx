@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function NewPlantForm({ onAddPlant }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -14,7 +16,7 @@ function NewPlantForm({ onAddPlant }) {
       price,
     };
 
-    fetch("http://localhost:6001/plants", {
+    fetch(`${API_URL}/plants`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

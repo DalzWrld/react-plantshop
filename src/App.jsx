@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import PlantPage from "./components/PlantPage";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [plants, setPlants] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:6001/plants")
+    fetch(`${API_URL}/plants`)
       .then((res) => {
         if (!res.ok) throw new Error();
         return res.json();
